@@ -2,7 +2,7 @@ import type { ResultSetHeader } from "mysql2";
 import client from "../../database/client";
 
 
-export interface IUser{
+export interface IUser {
     id: number;
     email: string;
     firstName: string;
@@ -12,8 +12,8 @@ export interface IUser{
     createdAt: Date;
     updatedAt: Date;
 }
-class UserRepository{
-    async create(user: Omit<IUser, "id" | "createdAt" | "updatedAt"> ){
+class UserRepository {
+    async create(user: Omit<IUser, "id" | "createdAt" | "updatedAt">) {
         const [result] = await client.query<ResultSetHeader>(
             "insert into users (email, firstName, lastName, password) values (?, ?, ?, ?)",
             [user.email, user.firstName, user.lastName, user.hashPassword]
@@ -46,10 +46,14 @@ class UserRepository{
         );
         return result.affectedRows;
     }
-
     async findByEmail(email: string) {
         const [rows] = await client.query("select * from users where email = ?", [email]);
         return rows as IUser[];
     }
+
+    /* static async findByEmail(email: string) {
+        const [rows] = await client.query("select * from users where email = ?", [email]);
+        return rows as IUser[];
+    } */
 }
 export default UserRepository;

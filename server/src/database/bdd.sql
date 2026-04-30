@@ -1,4 +1,7 @@
 -- Création de la table users
+CREATE DATABASE IF NOT EXISTS db_ci;
+USE db_ci;
+
 CREATE TABLE IF NOT EXISTS users (
   id INT PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL UNIQUE,
