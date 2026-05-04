@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
-import UserRepository from "../../src/modules/user/userRepository";
+import UserRepository from "../modules/user/userRepository";
 import { describe } from "node:test";
 import type { Request, Response } from "express";
 

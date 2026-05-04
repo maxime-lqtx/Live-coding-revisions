@@ -12,7 +12,6 @@
       "jest",
       "node"
     ],
-    "moduleResolution": "node",
     "esModuleInterop": true,
     // For nodejs:
     // "lib": ["esnext"],
@@ -42,4 +41,5 @@
     "skipLibCheck": true,
   },
   // "include": ["database"],
+  "exclude": ["jest.config.ts"]
 }

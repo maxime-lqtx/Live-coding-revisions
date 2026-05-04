@@ -46,14 +46,9 @@ class UserRepository {
         );
         return result.affectedRows;
     }
-    async findByEmail(email: string) {
+    static async findByEmail(email: string) {
         const [rows] = await client.query("select * from users where email = ?", [email]);
         return rows as IUser[];
     }
-
-    /* static async findByEmail(email: string) {
-        const [rows] = await client.query("select * from users where email = ?", [email]);
-        return rows as IUser[];
-    } */
 }
 export default UserRepository;
